@@ -29,6 +29,7 @@ public class EventController {
         return ResponseEntity.ok().body(list);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
     @PostMapping
     public ResponseEntity<EventDTO> insert(@Valid @RequestBody EventDTO dto) {
         dto = service.insert(dto);
